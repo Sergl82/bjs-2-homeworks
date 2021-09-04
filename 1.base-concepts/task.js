@@ -20,20 +20,24 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   "use strict"
   let totalAmount;
   // код для задачи №2 писать здесь
-  let S = amount - contribution;
-  let P = percent / 1200;
+  let S = +amount - +contribution;
+  let P = +percent / 1200;
   let startDate = new Date();
   let endDate = date;
   const n = (endDate.getFullYear() - startDate.getFullYear())*12 + (endDate.getMonth() - startDate.getMonth());
-
-  if(P === 0 || percent === '')  {
+console.log(P)
+  if(isNaN(percent) || percent <= 0 || percent === '')  {
     totalAmount = ('Параметр "Процентная ставка" содержит неправильное значение "test"');
-  }else if (contribution === '') {
+  }else if (isNaN(contribution) || contribution < 0 || contribution === '') {
     totalAmount = ('Параметр "Начальный взнос" содержит неправильное значение "test"');
-  }else if (amount === '' || amount === 0) {
+  }else if(isNaN(amount) || amount <= 0 || amount === '') {
     totalAmount = ('Параметр "Общая стоимость" содержит неправильное значение "test"');
-  } else totalAmount = +((S * (P + P / (Math.pow((1 + P), n) - 1))) * n).toFixed(2);
+  }else if (isNaN(date)) {
+    totalAmount = ('Неправильное значение "Срок ипотеки" ');
+  }else
+  totalAmount = +((S * (P + P / (Math.pow((1 + P), n) - 1))) * n).toFixed(2);
 
   return totalAmount;
 
-}
+
+}console.log(calculateTotalMortgage(0,0,10000,new Date(2023, 6, 30)))
