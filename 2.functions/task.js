@@ -35,10 +35,11 @@ function makeWork(arrOfArr, func) {
   let num = [];
   // Ваш кода
   for (let i = 0; i < arrOfArr.length; i++) {
-    num.push(arrOfArr[i]);
+    func(arrOfArr[i]);
+    console.log(arrOfArr[i])
   }
-  sum = func(num);
-    (max < sum) ? max = sum : sum === sum;
+  func.reduce()
+
 
   return max
 }console.log((makeWork([[10,20,30],[-40,-50,-65]], worker2)))
