@@ -17,11 +17,14 @@ Student.prototype.setSubject = function (subjectName) {
 
   // addMark(mark)
 Student.prototype.addMark = function (mark) {
-      this.marks = mark;
+  if (this.marks === undefined) {
+    this.marks = [];
+}
+  this.marks.push(mark)
     }
 
     //student1.addMark(5)
-    //student2.addMark(3);
+    student2.addMark(3);
 
 Student.prototype.addMarks = function (...marks) {
   if (this.marks === undefined) {
@@ -44,7 +47,7 @@ Student.prototype.getAverage = function() {
 
     }
         average = sum / this.marks.length;
-    return +average.toFixed(4);
+    return +average;
 
 }
 
