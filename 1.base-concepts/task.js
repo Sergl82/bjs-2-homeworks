@@ -40,4 +40,5 @@ console.log(P)
   return totalAmount;
 
 
-}console.log(calculateTotalMortgage(0,0,10000,new Date(2023, 6, 30)))
+}
+console.log(calculateTotalMortgage(0,0,10000,new Date(2023, 6, 30)))
