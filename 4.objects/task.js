@@ -23,7 +23,7 @@ Student.prototype.addMark = function (mark) {
   this.marks.push(mark)
     }
 
-    //student1.addMark(5)
+    student1.addMark(5)
     student2.addMark(3);
 
 Student.prototype.addMarks = function (...marks) {
@@ -34,7 +34,7 @@ Student.prototype.addMarks = function (...marks) {
     this.marks.push(marks[i]);
   }
 }
-       //student1.addMarks(5, 4, 5);
+      student1.addMarks(5, 4, 5);
       student2.addMarks(2, 3, 2);
 
 // ваш код для остальных методов
