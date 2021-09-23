@@ -108,7 +108,7 @@ class Library {
 
    }
 
-//задача 2
+//задача 3
 
 class Student {
   // ваш код
