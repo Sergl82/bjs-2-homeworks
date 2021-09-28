@@ -15,6 +15,7 @@ Student.prototype.setSubject = function (subjectName) {
 }
 
  student1.subject = 'algebra';
+ student1.subject = 'geometry'
  student2.subject = 'geometry';
 
   // addMark(mark)
@@ -62,5 +63,3 @@ Student.prototype.exclude = function(reason) {
 }
     student2.exclude();
     student2.excluded = 'low grades';
-
-console.log(student2);
