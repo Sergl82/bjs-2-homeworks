@@ -15,14 +15,12 @@ class PrintEditionItem {
         return this.state;
   }
 
-     set state(number)
-    {
-      if (number < 0) {
+     set state(num) {
+      if (num < 0) {
         this.state = 0;
-      } else if (number > 100) {
-        this.state = 100;
+        return;
       }
-      this._state = number;
+        this._state = num;
     }
 
     get state()
@@ -30,7 +28,6 @@ class PrintEditionItem {
       return this._state;
     }
   }
-
 
 class Magazine extends PrintEditionItem {
 
@@ -79,10 +76,9 @@ class Library {
   }
 
   addBook (book) {
-    if (book.state >= 30){
+    if (book.state >= 30) {
       this.books.push(book)
     }
-    return this.books;
   }
 
   findBookBy (type, value) {
@@ -96,17 +92,17 @@ class Library {
   }
 
   giveBookByName (bookName) {
-    let bookSearch = [];
-    for (let key in this.books) {
-      if(this.books[key].name === bookName) {
-        bookSearch.push(this.books[key])
-        this.books.splice(bookSearch, 1)
-      }
-    }
-    return bookSearch;
+    const  bookSearch = this.books.filter((value) => {
+      return value.name === bookName;
+    })
+    bookSearch.forEach(item => {
+      const index = this.books.indexOf(item)
+       this.books.splice(index, 1);
+        })
+        return bookSearch[0].name;
   }
 
-   }
+}
 
 //задача 3
 
