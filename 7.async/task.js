@@ -16,12 +16,12 @@ class AlarmClock {
   }
 
   removeClock(id) {
-    this.alarmCollection = this.alarmCollection.filter((value) =>  value.id !== id )
-    if(this.alarmCollection.includes(id) !== true) {
-      console.log('Звонок удален')
-    }else
-      console.log("Не удалось удалить звонок")
-      return this.alarmCollection
+      let remove = this.alarmCollection.find(item => item.id === id)
+        if(remove === undefined){
+          return console.log("Звонок не существует")
+      } else
+          this.alarmCollection = this.alarmCollection.filter((value) => value.id !== id)
+          return console.log('Звонок удален')
   }
 
   getCurrentFormattedTime(){
@@ -65,3 +65,4 @@ class AlarmClock {
 
   }
 }
+

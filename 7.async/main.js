@@ -1,6 +1,6 @@
 // тут вы можете вызывать функции из task.js
 
-function testCase () {
+/*function testCase () {
 const clock = new AlarmClock();
 
  clock.addClock('21:45', f => console.log("Пора вставать"), 5);
@@ -19,5 +19,5 @@ clock.addClock('21:46', f => console.log("Вставай а то проспиш�
   console.log(clock.timerId)
 }
 
-console.log(testCase())
+console.log(testCase())*/
 
