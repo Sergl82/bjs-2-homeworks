@@ -8,21 +8,21 @@ class AlarmClock {
     if (id === undefined) {
       throw new Error('error text')
     }
-    let alarms = this.alarmCollection.includes(id);
-    if(alarms !== true) {
-      this.alarmCollection.push({time, func, id})
-    }else
-    console.error("Error")
+    let alarms = this.alarmCollection.find(value => value.id === id)
+      if (alarms === undefined) {
+        this.alarmCollection.push({time, func, id })
+      } else
+        return console.error("Error измените id")
   }
 
-
-  removeClock(id){
-    let remove = this.alarmCollection.filter((item) => item.id !== id)
-     if (remove === true){
-       return 'Звонок удален'
-     }else return "НЕУДАЛОСЬ УДАЛИТЬ ЗВОНОК"
-    }
-
+  removeClock(id) {
+    this.alarmCollection = this.alarmCollection.filter((value) =>  value.id !== id )
+    if(this.alarmCollection.includes(id) !== true) {
+      console.log('Звонок удален')
+    }else
+      console.log("Не удалось удалить звонок")
+      return this.alarmCollection
+  }
 
   getCurrentFormattedTime(){
    const data = new Date();
@@ -35,27 +35,23 @@ class AlarmClock {
   }
 
   start() {
-     let checkClock = () => {
+    let checkClock = () => {
       this.alarmCollection.forEach(item => {
         if (item.time === this.getCurrentFormattedTime()) {
-        return console.log(item.func())
+          return console.log(item.func())
         }
-
       })
     }
-     const id = setInterval(checkClock, 60000)
-      if (Number.isNaN(this.timerId)) {
-        this.timerId = id;
-      }
+      const id = setInterval(checkClock, 60000);
+      return this.timerId = id;
   }
 
   stop(){
-    let clearClock;
     if (this.timerId > 0) {
       clearInterval(this.timerId);
+      this.timerId = NaN;
     }
-      clearClock = this.alarmCollection.splice(0, this.alarmCollection.length)
-      return clearClock;
+
   }
 
   printAlarms(){
@@ -65,8 +61,7 @@ class AlarmClock {
   clearAlarms(){
       clearInterval(this.timerId);
       this.alarmCollection.splice(0, this.alarmCollection.length)
+      this.timerId = null;
 
   }
 }
-
-
